@@ -52,17 +52,29 @@
 
   }
 </script>
+<style>
+    .container {
+    font-size:0}
+
+    .column {
+    display: inline-block;
+    width: 50%;
+    font-size:1rem; /* IE9+ */
+    }
+
+    .ie7 .column {font-size:16px; display:inline; zoom:1}
+
+    .ie8 .column {font-size:16px}
+
+</style>
+
 </head>
 
 <body onload="init()">
-  <h1>Simple Marker Example</h1>
-  <p>Run the following commands in the terminal then refresh this page.</p>
-  <ol>
-    <li><tt>roscore</tt></li>
-    <li><tt>rosrun visualization_marker_tutorials basic_shapes</tt></li>
-    <li><tt>rosrun tf2_web_republisher tf2_web_republisher</tt></li>
-    <li><tt>roslaunch rosbridge_server rosbridge_websocket.launch</tt></li>
-  </ol>
-  <div id="viewer"></div>
+<div class="container">
+  <div class="column" id="viewer"></div>
+  <img class="column" src="http://localhost:8088/stream?topic=/orb_slam2_mono/debug_image">
+  </img>
+  </div>
 </body>
 </html>
