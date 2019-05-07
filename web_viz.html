@@ -36,17 +36,37 @@
       fixedFrame : '/map'
     });
 
+/*
     var map_axes = new ROS3D.TFAxes({
       tfClient: tfClient,
       frame_id: '/map',
       rootObject : viewer.scene
     });
+    */
 
+    var cloudClient = new ROS3D.PointCloud2({
+        ros: ros,
+        tfClient: tfClient,
+        rootObject: viewer.scene,
+        topic: '/orb_slam2_mono/map_points',
+        material: { size: 0.05, color: 0xff0000 }
+    });
+
+    var poseClient = new ROS3D.Pose({
+        ros: ros,
+        tfClient: tfClient,
+        rootObject: viewer.scene,
+        topic: '/orb_slam2_mono/pose',
+    });
+
+
+/*
     var camera_axes = new ROS3D.TFAxes({
       tfClient: tfClient,
       frame_id: '/camera_link',
       rootObject : viewer.scene
     });
+    */
 
     viewer.addObject(new ROS3D.Grid());
 
